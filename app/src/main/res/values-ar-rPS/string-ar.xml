@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">اختبر نفسك</string>
+    <string name="splash_title">مرحبا بك</string>
+    <string name="sign_up_title">انشاء حساب</string>
+    <string name="sign_up_btn">ليس لدي حساب_ انشاء حساب</string>
+    <string name="login_title">تسجيل الدخول</string>
+    <string name="login_btn">لدي حساب _ تسجيل دخول</string>
+    <string name="email_label">البريد الالكتروني</string>
+    <string name="pass_label">كلمة السر</string>
+    <string name="start_quiz">ابدأ الكويز</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="welcome">مرحبا</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="submit">تعديل</string>
+    <string name="quiz_time">وقت الكويز !</string>
+    <string name="score">مجموع النقاط</string>
+    <string name="retry_quiz">اعد المحاولة</string>
+    <string name="back_to_quiz">"العودة للكوز "</string>
+    <string name="kingOfQuiz">بطل الكويز</string>
+    <string name="addQ">اضافة سؤال</string>
+    <string name="view_leaderboard">شاشة التقيم العالمي</string>
+    <string name="Delete">حذف سؤال</string>
+    <string name="main_screen">الشاشاة الرئيسية</string>
+    <string name="question_title">سؤال رقم</string>
+    <string name="search">بحث</string>
+    <string name="Last_Question">اخر سؤال</string>
+</resources>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name" translatable="false">Test yourself</string>
+    <string name="splash_title" translatable="false">Welcome to </string>
+    <string name="sign_up_title" translatable="false">Sign Up</string>
+    <string name="sign_up_btn" translatable="false">Don\'t have an account? Sign Up</string>
+    <string name="login_title" translatable="false">Login</string>
+    <string name="login_btn" translatable="false">Already have an account? Login</string>
+    <string name="email_label" translatable="false">Email</string>
+    <string name="pass_label" translatable="false">Password</string>
+    <string name="start_quiz" translatable="false">Start Quiz</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="welcome" translatable="false">Welcome_</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="submit" translatable="false">Submit</string>
+    <string name="quiz_time" translatable="false">Quiz Time!</string>
+    <string name="score" translatable="false">Score</string>
+    <string name="retry_quiz" translatable="false">Retry Quiz</string>
+    <string name="back_to_quiz" translatable="false">Back to Quiz</string>
+    <string name="kingOfQuiz" translatable="false">The king of quiz</string>
+    <string name="addQ" translatable="false">Add question</string>
+    <string name="view_leaderboard" translatable="false">View Leaderboard</string>
+    <string name="Delete" translatable="false">Delete question</string>
+    <string name="Upload" translatable="false">Upload</string>
+    <string name="main_screen" translatable="false">Home screen</string>
+    <string name="question_title" translatable="false">Question</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="Last_Question" translatable="false">Last Question</string>
+
+
+</resources>
