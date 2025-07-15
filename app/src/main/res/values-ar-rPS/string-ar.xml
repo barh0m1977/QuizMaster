@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">اختبر نفسك</string>
+    <string name="app_name">Quiz Master</string>
     <string name="splash_title">مرحبا بك</string>
     <string name="sign_up_title">انشاء حساب</string>
     <string name="sign_up_btn">ليس لدي حساب_ انشاء حساب</string>

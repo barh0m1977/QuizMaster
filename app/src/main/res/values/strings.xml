@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Test yourself</string>
+    <string name="app_name" translatable="false">Quiz Master</string>
     <string name="splash_title" translatable="false">Welcome to </string>
     <string name="sign_up_title" translatable="false">Sign Up</string>
     <string name="sign_up_btn" translatable="false">Don\'t have an account? Sign Up</string>
