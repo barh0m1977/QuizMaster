@@ -49,7 +49,8 @@ fun QuizScreen(viewModel: QuizViewModel, navController: NavController) {
     val questions by remember { derivedStateOf { viewModel.questions } }
     val currentQuestion = questions.getOrNull(currentIndex)
     val numberOfQuestion = currentQuestion?.numberOfQuestion ?: 0
-
+    val userState = UserViewModel()
+        userState.user.collectAsState()
 
     Scaffold(
         topBar = {

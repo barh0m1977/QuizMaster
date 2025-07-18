@@ -6,6 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,6 +17,7 @@ import com.ibrahim.quizmaster.ui.screens.*
 import com.ibrahim.quizmaster.viewmodel.QuizViewModel
 import com.ibrahim.quizmaster.viewmodel.AuthViewModel
 import com.ibrahim.quizmaster.data.repository.ScoreRepository
+import com.ibrahim.quizmaster.ui.screens.forgotpassword.ForgotPasswordScreen
 import com.ibrahim.quizmaster.viewmodel.UserViewModel
 
 @Composable
@@ -73,6 +75,19 @@ fun AppNavGraph(viewModel: QuizViewModel, authViewModel: AuthViewModel) {
         composable("profile") {
             ProfileScreen(navController = navController, userViewModel = userViewModel)
         }
+//        composable("request_reset") {
+//            val forgotPasswordViewModel: ForgotPasswordViewModel = viewModel()
+//            RequestResetCodeScreen(viewModel = forgotPasswordViewModel, navController = navController)
+//        }
+//
+//        composable("reset_password") {
+//            val forgotPasswordViewModel: ForgotPasswordViewModel = viewModel()
+//            ResetPasswordScreen(viewModel = forgotPasswordViewModel, navController = navController)
+//        }
+        composable("forget_password") {
+            ForgotPasswordScreen(navController)
+        }
+
 
     }
 }

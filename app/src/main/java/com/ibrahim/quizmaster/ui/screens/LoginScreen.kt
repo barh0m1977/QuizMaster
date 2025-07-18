@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
-    
+
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf<String?>(null) }
@@ -33,21 +33,6 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
     val coroutineScope = rememberCoroutineScope()
 
     val userPreferences = remember { UserPreferences(context) }
-    var userEmail by remember { mutableStateOf<String?>(null) }
-
-    // ✅ Fetch saved email in a coroutine to avoid UI blocking
-//    LaunchedEffect(Unit) {
-//        userEmail = userPreferences.getUserEmail()
-//    }
-//
-//    // ✅ Navigate if already logged in
-//    userEmail?.let {
-//        LaunchedEffect(Unit) {
-//            navController.navigate("main") {
-//                popUpTo("login") { inclusive = true }
-//            }
-//        }
-//    }
 
     // ✅ Success Callback
     authViewModel.loginSuccess = { userId ->
@@ -55,7 +40,9 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             userPreferences.saveUser(userId, email)
         }
         Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
-        navController.navigate("main") { popUpTo("login") { inclusive = true } }
+        navController.navigate("main") {
+            popUpTo("login") { inclusive = true }
+        }
     }
 
     // ✅ Error Callback
@@ -71,8 +58,12 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(stringResource(id = R.string.login_title), style = MaterialTheme.typography.headlineLarge)
+        Text(
+            stringResource(id = R.string.login_title),
+            style = MaterialTheme.typography.headlineLarge
+        )
 
+        Spacer(modifier = Modifier.height(16.dp))
 
         LocaleOutlinedTextField(
             value = email,
@@ -81,6 +72,7 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             visualTransformation = VisualTransformation.None
         )
+
         LocaleOutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -90,6 +82,7 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
         )
 
         errorMessage?.let {
+            Spacer(modifier = Modifier.height(8.dp))
             Text(it, color = MaterialTheme.colorScheme.error)
         }
 
@@ -103,12 +96,25 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel) {
             navController = navController
         )
 
-        TextButton(onClick = { navController.navigate("signup") }) {
+        // ✅ Forgot Password Button
+        TextButton(onClick = {
+            navController.navigate("forget_password") // 🔁 Define this route in NavHost
+        }) {
+            Text(
+                text = "Forgot Password?",
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+
+        // ✅ Sign Up Button
+        TextButton(onClick = {
+            navController.navigate("signup")
+        }) {
             Text(
                 stringResource(id = R.string.sign_up_btn),
                 color = colorResource(id = R.color.hint_green)
             )
-
         }
     }
 }
+

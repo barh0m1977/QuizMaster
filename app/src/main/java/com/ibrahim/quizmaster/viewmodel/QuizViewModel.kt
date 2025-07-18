@@ -34,6 +34,8 @@ class QuizViewModel : ViewModel() {
     private val _lastQuestion = MutableStateFlow<String?>(null)
     val lastQuestion = _lastQuestion.asStateFlow()
 
+
+
     val quiz: StateFlow<QuizQuestion> = _quiz.onStart {
         fetchQuestions()
     }.stateIn(

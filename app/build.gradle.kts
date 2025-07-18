@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.google.firebase.crashlytics)
 }
 
 android {
@@ -30,12 +31,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            isDebuggable =false
         }
         getByName("debug") {
             isMinifyEnabled = false
             isShrinkResources = false
         }
     }
+    firebaseCrashlytics {
+        mappingFileUploadEnabled = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -69,6 +75,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.crashlytics)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -85,6 +92,8 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
     implementation( "com.google.firebase:firebase-auth:22.1.2")
+    implementation ("com.google.firebase:firebase-functions-ktx")
+
 
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 // Excel file reading
