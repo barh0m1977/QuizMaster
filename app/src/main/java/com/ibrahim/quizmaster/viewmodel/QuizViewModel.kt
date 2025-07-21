@@ -1,6 +1,7 @@
 package com.ibrahim.quizmaster.viewmodel
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.ibrahim.quizmaster.R
 import com.ibrahim.quizmaster.data.model.QuizQuestion
 import com.ibrahim.quizmaster.data.repository.QuizRepository
 import com.ibrahim.quizmaster.data.repository.UserRepository
@@ -33,7 +35,7 @@ class QuizViewModel : ViewModel() {
     val searchResults = _searchResults.asStateFlow()
     private val _lastQuestion = MutableStateFlow<String?>(null)
     val lastQuestion = _lastQuestion.asStateFlow()
-
+    var mediaPlayer:MediaPlayer? = null
 
 
     val quiz: StateFlow<QuizQuestion> = _quiz.onStart {
@@ -184,11 +186,17 @@ class QuizViewModel : ViewModel() {
         }
     }
 
-    fun checkAnswer(selectedAnswer: String, onQuizEnd: () -> Unit) {
+    fun checkAnswer(selectedAnswer: String, context: Context, onQuizEnd: () -> Unit) {
         currentQuestion?.let { question ->
             if (selectedAnswer == question.correctAnswer) {
                 score++
                 user.saveScore(score, question.numberOfQuestion)
+                mediaPlayer= MediaPlayer.create(context, R.raw.success_alert)
+                mediaPlayer?.start()
+//                mediaPlayer?.setOnPreparedListener {
+//                    mediaPlayer.seekTo(200)
+//                mediaPlayer?.start()
+//                }
                 if (isLastQuestion()) {
                     onQuizEnd()
                 } else {
@@ -196,6 +204,8 @@ class QuizViewModel : ViewModel() {
                 }
             } else {
                 user.saveScore(score, question.numberOfQuestion)
+                mediaPlayer=MediaPlayer.create(context,R.raw.dats_wrong)
+                mediaPlayer?.start()
                 onQuizEnd()
             }
         }

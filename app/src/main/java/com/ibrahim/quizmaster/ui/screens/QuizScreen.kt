@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -49,6 +50,7 @@ fun QuizScreen(viewModel: QuizViewModel, navController: NavController) {
     val questions by remember { derivedStateOf { viewModel.questions } }
     val currentQuestion = questions.getOrNull(currentIndex)
     val numberOfQuestion = currentQuestion?.numberOfQuestion ?: 0
+    val context= LocalContext.current
 //    val userState = UserViewModel()
 //        userState.user.collectAsState()
 
@@ -123,7 +125,7 @@ fun QuizScreen(viewModel: QuizViewModel, navController: NavController) {
                     currentQuestion.options.forEach { option ->
                         OutlinedButton(
                             onClick = {
-                                viewModel.checkAnswer(option) {
+                                viewModel.checkAnswer(option,context) {
                                     navController.navigate("result/${viewModel.score}")
                                 }
                             },
